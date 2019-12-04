@@ -1,5 +1,6 @@
 from datetime import timezone
 
+from django.contrib.auth.models import User
 from django.db import models
 
 FREQUENCY = {
@@ -17,6 +18,7 @@ class Newsletter(models.Model):
     frequency = models.CharField(max_length=10, choices=FREQUENCY, default='monthly')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
