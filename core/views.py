@@ -27,8 +27,6 @@ class UserViewSet(viewsets.ModelViewSet):
             self.permission_classes =[AllowAny]
         return[permission() for permission in self.permission_classes]
 
-
-
     def get_serializer_class(self):
         if self.action == 'create':
             return CreateUserSerializer
