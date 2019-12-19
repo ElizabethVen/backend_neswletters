@@ -9,12 +9,12 @@ class TagsSerializers(serializers.ModelSerializer):
     """
     General purpose Tags serializer
     """
-    tags = NewsletterSerializer(many=True, read_only=True)
+    #name = NewsletterSerializer(many=True, read_only=True)
 
     class Meta:
 
         model = Tags
-        fields = ('tags', 'created_at', 'updated_at')
+        fields = ('name', 'created_at', 'updated_at')
 
 
 class CreateTagsSerializer(serializers.ModelSerializer):
@@ -24,4 +24,4 @@ class CreateTagsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tags
-        fields = ('tags', 'created_at', 'updated_at')
+        fields = ('name', 'created_at', 'updated_at')
