@@ -21,7 +21,6 @@ class TagsViewSet(viewsets.ModelViewSet):
     queryset = Tags.objects.all()
     serializer_class = TagsSerializers
 
-
     def get_permissions(self):
         if self.action in ['retrieve', 'list']:
             self.permission_classes = [AllowAny]
