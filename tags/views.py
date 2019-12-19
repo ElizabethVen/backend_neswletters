@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 
 from tags.models import Tags
-from tags.serializers import TagsSerializers
+from tags.serializers import TagsSerializers, CreateTagsSerializer
 
 
 class TagsViewSet(viewsets.ModelViewSet):
@@ -26,6 +26,12 @@ class TagsViewSet(viewsets.ModelViewSet):
         if self.action in ['retrieve', 'list']:
             self.permission_classes = [AllowAny]
         return [permission() for permission in self.permission_classes]
+
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return CreateTagsSerializer
+        return TagsSerializers
+
 
 
 

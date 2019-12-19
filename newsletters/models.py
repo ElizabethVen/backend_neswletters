@@ -1,7 +1,11 @@
 from datetime import timezone
 
 from django.contrib.auth.models import User
+
 from django.db import models
+from django.db.models import CharField
+
+from tags.models import Tags
 
 FREQUENCY = {
     ('daily', 'Diario'),
@@ -19,8 +23,9 @@ class Newsletter(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    tags = models.ForeignKey(Tag, on_delete=models.CASCADE, default=0)
     votes = models.IntegerField(default=0)
+    tags = models.ManyToManyField(Tags)
+
 
     def __str__(self):
         return self.name

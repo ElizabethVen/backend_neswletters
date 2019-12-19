@@ -1,8 +1,17 @@
-from rest_framework import viewsets
+from requests import Response
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
 
 from newsletters.models import Newsletter
-from newsletters.serializers import NewsletterSerializer
+from tags.models import Tags
+
+from newsletters.serializers import NewsletterSerializer, CreateNewsletterSerializer
+from tags.serializers import TagsSerializers
+
+
+def page(args):
+    pass
 
 
 class NewsletterViewSet(viewsets.ModelViewSet):
@@ -38,4 +47,8 @@ class NewsletterViewSet(viewsets.ModelViewSet):
             return self.get_paginated_response(serialized.data)
 
 
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return CreateNewsletterSerializer
+        return NewsletterSerializer
 
