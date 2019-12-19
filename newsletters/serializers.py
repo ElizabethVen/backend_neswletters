@@ -17,5 +17,5 @@ class CreateNewsletterSerializer(serializers.ModelSerializer):
     """
 
     class Meta:
-        model = newsletters
+        model = Newsletter
         fields = ('name', 'description', 'image', 'target', 'frequency', 'created_at', 'updated_at', 'author', 'tags',)
