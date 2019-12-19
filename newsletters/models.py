@@ -32,7 +32,6 @@ class Newsletter(models.Model):
         boletin = Newsletter.objects.filter(name=self.name)  #guardo en una variable el query a la BD filtrando por name
         if boletin.exists():    #si boletin existe se guarda sino no
             super(Newsletter, self).save(*args, **kwargs)
-        
     """
 
     class Meta:
