@@ -32,3 +32,4 @@ class UserViewSet(viewsets.ModelViewSet):
             return CreateUserSerializer
         return UserSerializer
 
+
